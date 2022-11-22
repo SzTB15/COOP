@@ -8,6 +8,7 @@ def menu():
     print('1 - Áruk listázása')
     print('2 - Aruk listázása árral')
     print('3 - Árucikk hozzáadása')
+    print('4 - B')
     return input('Választás: ')
 
 
@@ -40,7 +41,7 @@ def addArucikk():
     name = input('Név: ')
     ara = float(input('Ára: '))
     nev.append(name)
-    ar.append=(ara)
+    ar.append(ara)
     saveResultToFile(name, ara)
     print('Sikeres felvétel.')
     input()
