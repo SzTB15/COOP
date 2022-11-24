@@ -12,4 +12,6 @@ while choice != '0':
         input()
     elif choice == '3':
         addArucikk()
+    elif choice == '4':
+        bevasarlas()
     

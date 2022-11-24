@@ -1,5 +1,6 @@
 from data import ar,nev
 from os import system
+from math import *
 filename = 'termekek.csv'
 
 def menu():
@@ -8,7 +9,7 @@ def menu():
     print('1 - Áruk listázása')
     print('2 - Aruk listázása árral')
     print('3 - Árucikk hozzáadása')
-    print('4 - B')
+    print('4 - Bevásárlás')
     return input('Választás: ')
 
 
@@ -26,14 +27,14 @@ def showAruk():
     print('Áruk')
     for name in nev:
         print(f'\t{name}')
-    input()
+    
 
 def showArukAr():
     system('cls')
     print('Árucikkek árral')
-    for arak,nevek in zip(nev,ar):
-        print(f'{arak} - {nevek}Ft')
-    input()
+    for nevek,arak in zip(nev,ar):
+        print(f'{nevek} - {arak}Ft')
+    
 
 def addArucikk():
     system('cls')
@@ -44,9 +45,22 @@ def addArucikk():
     ar.append(ara)
     saveResultToFile(name, ara)
     print('Sikeres felvétel.')
-    input()
+    
 
 def saveResultToFile(name, ara):
     file = open(filename, 'a', encoding='utf-8')
     file.write(f'{name};{ara}\n')
     file.close()
+
+def bevasarlas():
+    showArukAr()
+    penz = float(input('Pénzed:'))
+    megadottAruk = input('Áruk megadása szóközzel elválasztva:')
+    arukLevonasa(megadottAruk,penz)
+
+def arukLevonasa(megadottAruk,penz):
+    index = 0
+    
+    if megadottAruk == nev[index]:
+        penz - ar[index]
+        
