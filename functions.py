@@ -25,7 +25,7 @@ def showArukAr():
     system('cls')
     print('Árucikkek árral')
     for key, value in arnev.items():
-        print(f'{key} - {value}')
+        print(f'{key} - {value} Ft')
     
 
 def addArucikk():
