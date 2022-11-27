@@ -1,4 +1,4 @@
-from data import ar,nev
+from data import *
 from os import system
 from math import *
 filename = 'termekek.csv'
@@ -6,10 +6,9 @@ filename = 'termekek.csv'
 def menu():
     system('cls')
     print('0 - Kilép')
-    print('1 - Áruk listázása')
-    print('2 - Aruk listázása árral')
-    print('3 - Árucikk hozzáadása')
-    print('4 - Bevásárlás')
+    print('1 - Áruk listázása árral')
+    print('2 - Árucikk hozzáadása')
+    print('3 - Bevásárlás')
     return input('Választás: ')
 
 
@@ -18,31 +17,23 @@ def loadFromFile():
     file.readline()
     for row in file:
         splitted = row.strip().split(';')
-        nev.append(splitted[0])
-        ar.append(float(splitted[1]))
+        arnev[splitted[0]] = int(splitted[1])
     file.close() 
-
-def showAruk():
-    system('cls')
-    print('Áruk')
-    for name in nev:
-        print(f'\t{name}')
     
 
 def showArukAr():
     system('cls')
     print('Árucikkek árral')
-    for nevek,arak in zip(nev,ar):
-        print(f'{nevek} - {arak}Ft')
+    for key, value in arnev.items():
+        print(f'{key} - {value}')
     
 
 def addArucikk():
     system('cls')
     print('Új árucikk hozzáadása')
     name = input('Név: ')
-    ara = float(input('Ára: '))
-    nev.append(name)
-    ar.append(ara)
+    ara = int(input('Ára: '))
+    arnev[name] = ara
     saveResultToFile(name, ara)
     print('Sikeres felvétel.')
     
@@ -52,15 +43,22 @@ def saveResultToFile(name, ara):
     file.write(f'{name};{ara}\n')
     file.close()
 
-def bevasarlas():
-    showArukAr()
-    penz = float(input('Pénzed:'))
-    megadottAruk = input('Áruk megadása szóközzel elválasztva:')
-    arukLevonasa(megadottAruk,penz)
 
-def arukLevonasa(megadottAruk,penz):
-    index = 0
-    
-    if megadottAruk == nev[index]:
-        penz - ar[index]
+def bevasarlas():
+    system('cls')
+    showArukAr()
+    input()
+    penz = int(input('Pénzed:'))
+    termek1 = input('Megvásárolni kívánt termék: ')
+    i = searchTermek(termek1)
+    termekAr = arnev[i]
+    marad = penz - termekAr
+    print(f'Ennyi pénzed maradt: {marad}Ft')
+    input()
+
         
+def searchTermek(needle):
+    for name, point in arnev.items():
+        if needle.upper() == name.upper():
+            return name
+    return False

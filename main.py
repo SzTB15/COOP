@@ -5,13 +5,9 @@ choice = ''
 while choice != '0':
     choice = menu()
     if choice == '1':
-        showAruk()
-        input()
-    elif choice == '2':
         showArukAr()
         input()
-    elif choice == '3':
+    elif choice == '2':
         addArucikk()
-    elif choice == '4':
+    elif choice == '3':
         bevasarlas()
-    
