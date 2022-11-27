@@ -1,6 +1,6 @@
 Szimulál egy vásárlást a COOP boltban.
 Meg lehet adni, hogy mennyi pénzünk legyen, majd ki lehet választani, hogy miket szeretnénk megvásárolni.
-A végén kiírja a megmaradt pénzünket, ha többe kerülnek a vásárolt termékek akkor kiírja, hogy nincs elég pénz.
+A végén kiírja a megmaradt pénzünket.
 
 termekek.csv: Itt lesznek a termékek.
           tej;469
